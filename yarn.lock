@@ -886,6 +886,39 @@
     lodash "^4.17.13"
     to-fast-properties "^2.0.0"
 
+"@bit/ramda.ramda.internal._curry1@0.26.1":
+  version "0.26.1"
+  resolved "https://node.bit.dev/ramda.ramda.internal._curry1/-/ramda.ramda.internal._curry1-0.26.1.tgz#c115be3440ae3a3bd63bbde9a176c76df0408012"
+  integrity sha1-wRW+NECuOjvWO73poXbHbfBAgBI=
+  dependencies:
+    "@bit/ramda.ramda.internal._is-placeholder" "0.26.1"
+
+"@bit/ramda.ramda.internal._has@0.26.1":
+  version "0.26.1"
+  resolved "https://node.bit.dev/ramda.ramda.internal._has/-/ramda.ramda.internal._has-0.26.1.tgz#157d8427bda69a9488e397b8c57f16fa3723d887"
+  integrity sha1-FX2EJ72mmpSI45e4xX8W+jcj2Ic=
+
+"@bit/ramda.ramda.internal._is-arguments@0.26.1":
+  version "0.26.1"
+  resolved "https://node.bit.dev/ramda.ramda.internal._is-arguments/-/ramda.ramda.internal._is-arguments-0.26.1.tgz#33d3031807e3b3386e73a060ece982e3d1d49c1e"
+  integrity sha1-M9MDGAfjszhuc6Bg7OmC49HUnB4=
+  dependencies:
+    "@bit/ramda.ramda.internal._has" "0.26.1"
+
+"@bit/ramda.ramda.internal._is-placeholder@0.26.1":
+  version "0.26.1"
+  resolved "https://node.bit.dev/ramda.ramda.internal._is-placeholder/-/ramda.ramda.internal._is-placeholder-0.26.1.tgz#7b9d90316e7b553cd1138601e498cf0cf2bed6a9"
+  integrity sha1-e52QMW57VTzRE4YB5JjPDPK+1qk=
+
+"@bit/ramda.ramda.keys@^0.26.1":
+  version "0.26.1"
+  resolved "https://node.bit.dev/ramda.ramda.keys/-/ramda.ramda.keys-0.26.1.tgz#e100b3872e4b2949e38220e70b53b4a473175487"
+  integrity sha1-4QCzhy5LKUnjgiDnC1O0pHMXVIc=
+  dependencies:
+    "@bit/ramda.ramda.internal._curry1" "0.26.1"
+    "@bit/ramda.ramda.internal._has" "0.26.1"
+    "@bit/ramda.ramda.internal._is-arguments" "0.26.1"
+
 "@cnakazawa/watch@^1.0.3":
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/@cnakazawa/watch/-/watch-1.0.3.tgz#099139eaec7ebf07a27c1786a3ff64f39464d2ef"
@@ -2028,6 +2061,11 @@ binary-extensions@^1.0.0:
   version "1.13.1"
   resolved "https://registry.yarnpkg.com/binary-extensions/-/binary-extensions-1.13.1.tgz#598afe54755b2868a5330d2aff9d4ebb53209b65"
   integrity sha512-Un7MIEDdUC5gNpcGDV97op1Ywk748MpHcFTHoYs6qnj1Z3j7I53VG3nwZhKzoBZmbdRNnb6WRdFlwl7tSDuZGw==
+
+bit@^1.0.20:
+  version "1.0.20"
+  resolved "https://registry.yarnpkg.com/bit/-/bit-1.0.20.tgz#9b34523209ac290aa7411ae8f7f6cdc1cc755447"
+  integrity sha512-c8oEAYOi8KjAdDmdkLTR669YNvv9f/FWpkx5noFgPMj2DnG4j+HbEN+HRblwUb9V3zDMbVAb8Jx19qrn+9EHvw==
 
 bluebird@^3.5.5:
   version "3.7.0"
@@ -7997,7 +8035,7 @@ react-dev-utils@^9.1.0:
     strip-ansi "5.2.0"
     text-table "0.2.0"
 
-react-dom@16.12.0:
+react-dom@^16.12.0:
   version "16.12.0"
   resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-16.12.0.tgz#0da4b714b8d13c2038c9396b54a92baea633fe11"
   integrity sha512-LMxFfAGrcS3kETtQaCkTKjMiifahaMySFDn71fZUNpPHZQEzmk/GiAeIT8JSOrHB23fnuCOMruL2a8NYlw+8Gw==
@@ -8078,7 +8116,7 @@ react-scripts@3.2.0:
   optionalDependencies:
     fsevents "2.0.7"
 
-react@16.12.0:
+react@^16.12.0:
   version "16.12.0"
   resolved "https://registry.yarnpkg.com/react/-/react-16.12.0.tgz#0c0a9c6a142429e3614834d5a778e18aa78a0b83"
   integrity sha512-fglqy3k5E+81pA8s+7K0/T3DBCF0ZDOher1elBFzF7O6arXJgzyu/FW+COxFvAWXJoJN9KIZbT2LXlukwphYTA==

@@ -1,39 +1,40 @@
 import React, { Component } from 'react';
+
+import Cart from './components/Cart/Cart';
+import Inventory from './components/Inventory/Inventory';
 import './App.css';
 
-import Rkeys from "@bit/ramda.ramda.keys";
-
-import InventoryItem from './components/InventoryItem/InventoryItem';
-
-const inventory = {'Apple': 10, 'Melon': 20, 'Orange': 8};
+const inventory = [
+    {id: '1ghj', name: 'Apple', price: 10, selected: 0, stock: 12},
+    {id: '2bnm', name: 'Melon', price: 20, selected: 0, stock: 5},
+    {id: '3qaz', name: 'Orange', price: 8, selected: 0, stock: 20},
+];
 
 export default class App extends Component {
     state = {
+        cartItems: [],
+    }
 
+    selectItem = (event) => {
+        let id = event.target.id;
+
+        this.setState(() => {
+            return {
+                cartItems: inventory.map(item =>
+                    item.id === id ? {...item} : null
+                )
+            }
+        })
     }
 
     render() {
+        let { cartItems } = this.state;
 
         return (
             <div className="App">
-                <div>
-                    <h3>Cart</h3>
-                    <div>
-                        <p>Your cart is empty</p>
-                    </div>
-                    <div>
-                        Total: ${0}
-                        {' '}
-                        <button type="button" disabled="">Checkout</button>
-                    </div>
-                </div>
+                <Cart items={cartItems} />
                 <hr/>
-                <div>
-                    <h3>Inventory</h3>
-                    {Rkeys(inventory).map(item=>
-                        <InventoryItem />
-                    )}
-                </div>
+                <Inventory inventory={inventory} clicked={this.selectItem} />
             </div>
         )
     }

@@ -5,7 +5,11 @@ const InventoryItem = (props) => {
         <div>
             {props.title} - ${props.price}
             {' '}
-            <button type="button" id={props.id} onClick={props.clicked}>
+            <button
+                type="button"
+                id={props.id}
+                onClick={props.clicked}
+                disabled={props.stock <= 0 ? true : false}>
                 Buy
             </button>
             {' '}

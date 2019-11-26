@@ -4,22 +4,22 @@ import CartItem from './CartItem/CartItem';
 import classes from './Cart.module.css';
 
 const Cart = (props) => {
-    let { items } = props;
+    let { cartItems } = props;
 
     return (
         <div>
             <h3>Cart</h3>
             <div>
-                <p className={items.length > 0 ? classes.hide : null}>
+                <p className={cartItems.length > 0 ? classes.hide : null}>
                     Your cart is empty
                 </p>
-                {items.map(item =>
+                {cartItems.map(item =>
                     <CartItem
                         key={item.id}
-                        title={item.title}
+                        title={item.name}
                         price={item.price}
                         selected={item.selected}
-                        qty={item.qty} />
+                        qty={item.stock} />
                 )}
             </div>
             <div>

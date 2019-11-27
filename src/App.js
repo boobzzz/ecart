@@ -14,8 +14,9 @@ export default class App extends Component {
         ]
     }
 
-    selectItem = (event) => {
+    toggleQty = (event) => {
         let id = event.target.id;
+        let name = event.target.name;
 
         this.setState(({ cart, inventory }) => {
             return {
@@ -23,7 +24,17 @@ export default class App extends Component {
                     ...cart,
                     ...inventory.filter(item =>
                         item.id === id
-                        ? {...item, selected: item.selected++, stock: item.stock--}
+                        ? name === "-1"
+                            ? {
+                                ...item,
+                                selected: item.selected--,
+                                stock: item.stock++
+                            }
+                            : {
+                                ...item,
+                                selected: item.selected++,
+                                stock: item.stock--
+                            }
                         : null
                     )
                 ].reduce((acc, item) =>
@@ -31,18 +42,29 @@ export default class App extends Component {
                 , [])
             }
         })
+    }
 
-        console.log(this.state.cart);
+    total(arr) {
+        return arr.reduce((acc, item) =>
+            acc + item.price * item.selected
+        , 0)
     }
 
     render() {
         let { cart, inventory } = this.state;
+        let totaled = this.total(cart);
 
         return (
             <div className="App">
-                <Cart cartItems={cart} />
+                <Cart
+                    cartItems={cart}
+                    addQty={this.toggleQty}
+                    removeQty={this.toggleQty}
+                    total={totaled}/>
                 <hr/>
-                <Inventory inventory={inventory} clicked={this.selectItem} />
+                <Inventory
+                    inventory={inventory}
+                    clicked={this.toggleQty} />
             </div>
         )
     }

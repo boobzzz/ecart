@@ -16,16 +16,21 @@ const Cart = (props) => {
                 {cartItems.map(item =>
                     <CartItem
                         key={item.id}
+                        id={item.id}
                         title={item.name}
                         price={item.price}
                         selected={item.selected}
-                        qty={item.stock} />
+                        stock={item.stock}
+                        increase={props.addQty}
+                        decrease={props.removeQty} />
                 )}
             </div>
             <div>
-                Total: ${0}
+                Total: ${props.total}
                 {' '}
-                <button type="button" disabled={""}>
+                <button
+                    type="button"
+                    disabled={props.total <= 0 ? true : false}>
                     Checkout
                 </button>
             </div>

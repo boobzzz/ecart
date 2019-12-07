@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 
 import Cart from './components/Cart/Cart';
 import Inventory from './components/Inventory/Inventory';
-import './App.css';
 
 export default class App extends Component {
     state = {
@@ -15,39 +14,37 @@ export default class App extends Component {
     }
 
     toggleQty = (event) => {
-        let id = event.target.id;
-        let name = event.target.name;
+        let { name, id } = event.target;
+        let { cart, inventory } = this.state;
+        let added = inventory.filter(item =>
+            item.id === id
+            ? name === "-1"
+                ? {
+                    ...item,
+                    selected: item.selected--,
+                    stock: item.stock++
+                }
+                : {
+                    ...item,
+                    selected: item.selected++,
+                    stock: item.stock--
+                }
+            : null
+        )
+        let cartItems = [...cart, ...added].reduce((acc, item) =>
+            acc.includes(item) ? acc : [...acc, item]
+        , [])
 
-        this.setState(({ cart, inventory }) => {
-            return {
-                cart: [
-                    ...cart,
-                    ...inventory.filter(item =>
-                        item.id === id
-                        ? name === "-1"
-                            ? {
-                                ...item,
-                                selected: item.selected--,
-                                stock: item.stock++
-                            }
-                            : {
-                                ...item,
-                                selected: item.selected++,
-                                stock: item.stock--
-                            }
-                        : null
-                    )
-                ].reduce((acc, item) =>
-                    acc.includes(item) ? acc : [...acc, item]
-                , [])
-            }
+        this.setState({
+            cart: cartItems
         })
     }
 
     total(arr) {
         return arr.reduce((acc, item) =>
-            acc + item.price * item.selected
-        , 0)
+                acc + item.price * item.selected
+            , 0
+        )
     }
 
     render() {
@@ -55,12 +52,12 @@ export default class App extends Component {
         let totaled = this.total(cart);
 
         return (
-            <div className="App">
+            <div>
                 <Cart
                     cartItems={cart}
                     addQty={this.toggleQty}
                     removeQty={this.toggleQty}
-                    total={totaled}/>
+                    total={totaled} />
                 <hr/>
                 <Inventory
                     inventory={inventory}

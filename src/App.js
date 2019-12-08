@@ -47,7 +47,6 @@ export default class App extends Component {
         })
     }
 
-
     render() {
         let { cart, inventory } = this.state;
         let totaled = total(cart);

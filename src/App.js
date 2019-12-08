@@ -3,6 +3,13 @@ import React, { Component } from 'react';
 import Cart from './components/Cart/Cart';
 import Inventory from './components/Inventory/Inventory';
 
+function total(arr) {
+    return arr.reduce((acc, item) =>
+        acc + item.price * item.selected
+        , 0
+    )
+}
+
 export default class App extends Component {
     state = {
         cart: [],
@@ -40,16 +47,10 @@ export default class App extends Component {
         })
     }
 
-    total(arr) {
-        return arr.reduce((acc, item) =>
-                acc + item.price * item.selected
-            , 0
-        )
-    }
 
     render() {
         let { cart, inventory } = this.state;
-        let totaled = this.total(cart);
+        let totaled = total(cart);
 
         return (
             <div>
